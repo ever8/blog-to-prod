@@ -1,0 +1,6 @@
+<div class="container">
+<%= f.label "Upload" %><br/>
+<%= file_field_tag "images[]", type: :file, multiple: true %>
+<br>
+<p><%= f.submit "Upload",class: 'btn btn-primary btn-md' %></p>
+</div>

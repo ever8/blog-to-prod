@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to " Home ", root_path, class: " glyphicon glyphicon-home navbar-brand" %>
+    </div>
+    <ul class="nav navbar-nav navbar-right mr-auto">
+
+
+      <% if current_user.nil? %>
+      
+      <li>
+        <%= link_to new_user_session_path do %>
+          <i class="glyphicon glyphicon-user"></i></span> Login
+          <% end %>
+      <li>
+        <li>
+        <%= link_to new_user_registration_path do %>
+          <i class="glyphicon glyphicon-plus"></i></span> Register
+          <% end %>
+      <li>
+        <% else %>
+        <li class="nav-item"> <%= link_to "New Post", new_post_path , class: "btn btn-md"%></li>
+        <li class="nav-item"> <%= link_to "Images", images_path , class: "btn btn-md"%></li>
+ <li class="nav-item"> <%= link_to "Photos", photos_path , class: "btn btn-md"%></li>
+      <li>
+        <li> <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="glyphicon glyphicon-log-out"></i></span> Logout
+          <% end %> </li>
+        <% end %>
+    </ul>
+  </div>
+</nav>

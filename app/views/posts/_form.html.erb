@@ -1,0 +1,11 @@
+<div class="container">
+	<p><%= f.label :title %></p>
+	<%= f.text_field :title %><br/>
+
+	<p><%= f.label :body %></p>
+	<%= f.text_area :body, :class => "tinymce", :rows => 10, :cols => 40 %>
+	<%= tinymce %>
+
+		<br>
+	<p><%= f.submit "Save",class: 'btn btn-primary btn-md' %></p>
+</div>

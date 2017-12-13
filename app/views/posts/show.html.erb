@@ -1,0 +1,31 @@
+<div class="container"> 
+<h1 class="text-center"><%= @post.title %></h1>
+<hr>
+<p><%= sanitize(@post.body) %></p>
+
+<hr>
+
+<p class="text-center">
+	Autor: <%= @post.user.nickname %> <br>
+	Creeated at: <%= @post.created_at.strftime('%x') %> <br>
+	Update at: <%= @post.updated_at.strftime('%x') %> <br>
+</p>
+<hr>
+<div class="container pull-left text-left bg-default btn">
+	<br>
+	<% @comment.each do |comment| %>
+	<%= image_tag comment.user.avatar.url, width: 30, height: 30 %> 
+	<b> <%= comment.user.nickname %></b> say: <br>
+	<p class="container"> <%= comment.comment %></p>
+<% end %>
+
+</div>
+<%= form_for :postcomment ,url: post_postcomments_path(@post.id), method: :post do |f| %>
+	<% if flash[:notice] %>
+		<div class="notice"> <%= flash[:notice] %></div>
+	<% end %>
+	<p><%= f.label "Add your comment" %></p>
+	<p><%= f.text_area :comment, cols: 5,rows: 5 , class: 'container btn btn-default text-left'%></p>
+	<%= f.submit "Add Comment" , class: 'btn btn-primary btn-md' %>
+<% end %>
+</div>

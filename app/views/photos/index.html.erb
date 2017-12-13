@@ -1,0 +1,32 @@
+<div class="container">
+<%= link_to "upload new photo", new_photo_path, class: 'btn btn-info btn-md' %>
+<br><br>
+
+
+<%= select_tag "category_id", options_from_collection_for_select(Category.all, :id,:name) %>
+
+<br> <br>
+<% if @photos == [] %>
+  Photos none <br>
+<% else %>
+  <% @photos.each do |photo| %>
+  Category: (<%= photo.category.name %>)
+    <br>
+    User: (<%= photo.user.nickname %>)
+    <br>
+  <div class="text-center">   <%= image_tag photo.photo_url, width: 500 %>
+    <br>
+    <h1>  <%= photo.name %></h1></div>
+    <br>
+    
+    
+   <h3 class="text-danger"> <%= link_to "", vote_photo_path(photo.id) , class: ' text-danger glyphicon glyphicon-heart'%>
+      <%= @like[photo.id] %></h3>
+    <br><br>
+    <%= link_to "Edit photo", edit_photo_path(photo.id), class: "btn btn-warning" %>
+    <br><br>
+    <%= link_to "Delete photo", photo_path(photo.id), method: :delete, class: "btn btn-warning" %>
+<br><br>
+  <% end %>
+<% end %>
+</div>

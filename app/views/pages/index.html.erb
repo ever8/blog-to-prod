@@ -1,0 +1,17 @@
+
+
+<div class="container">
+<% @posts.each do |post| %>
+	<h1><%= link_to post.title , post_path(post.id)%></h1>
+	<p>	<%= image_tag post.user.avatar.url,width: 30 %>
+		Autor: <%= post.user.nickname %> |
+		Creeated at: <%= post.created_at.strftime('%x') %>
+		Update at: <%= post.updated_at.strftime('%x') %>
+	</p>
+	<p><%= sanitize(post.body) %></p>
+	<% if current_user != nil and current_user.id == post.user_id %>
+		<%= link_to "Edit", edit_post_path(post.id), class: 'btn btn-warning btn-sm' %>
+		<%= link_to "Delete", post_path(post.id), data: {confim: 'Are you sure?'}, method: :delete, class: 'btn btn-warning btn-sm' %>
+	<% end %>
+<% end %>
+</div>

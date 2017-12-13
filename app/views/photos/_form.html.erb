@@ -1,0 +1,14 @@
+
+<div class="container">
+<%= f.label :category  %>
+<%= select_tag "category_id", options_from_collection_for_select(Category.all, :id,:name) %>
+
+<p><%= f.label :name %></p>
+<%= f.text_field :name %><br/>
+
+<p><%= f.label :photo %></p>
+<%= f.file_field :photo %><br/>
+
+
+<p><%= f.submit "Save",class: 'btn btn-primary btn-md' %></p>
+</div>
