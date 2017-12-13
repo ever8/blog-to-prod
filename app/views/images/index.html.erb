@@ -16,7 +16,9 @@
     
     <br>
     <br>
+    <% if current_user != nil and current_user.id == image.user_id %>
     <%= link_to "Delete", image_path(image.id), data: {confim: 'Are you sure?'}, method: :delete , class: "btn btn-warning"%>
+    <% end %>
     <br><br>
   <% end %>
 <% end %>
